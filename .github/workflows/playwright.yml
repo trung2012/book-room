@@ -2,7 +2,7 @@ name: Playwright Scraper
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/16 * * * *'
+    - cron: '*/20 * * * *'
 
 jobs:
   test:
@@ -20,14 +20,3 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test
-    - name: Commit file changes
-      run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          # Your commands to make changes and commit
-          git commit -am "New random Wiki page added"
-          git push
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
