@@ -5,10 +5,10 @@ const hypothesis = true;
 
 test("Scrape data", async ({ page }) => {
   await scraper(page, 5);
+  expect(hypothesis).toBe(true);
+});
 
-  setTimeout(async () => {
-    await scraper(page, 6);
-  }, 10000);
-
+test("Scrape data 2", async ({ page }) => {
+  await scraper(page, 6);
   expect(hypothesis).toBe(true);
 });
